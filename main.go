@@ -2,23 +2,22 @@ package main
 
 import (
 	"fmt"
+	"greetings"
+	"log"
 
-	"time"
-
-	"rsc.io/quote"
 )
 
 func main(){
 
-  switch(time.Now().Weekday()){
-  case time.Saturday, time.Sunday:
-    fmt.Println("It's weekend")
-  default:
-    fmt.Println("It's weekday")
+  log.SetPrefix("greetings: ")
+  log.SetFlags(0)
+
+  message, err := greetings.Hello("")
+
+  if err != nil {
+    log.Fatal(err)
   }
 
-  fmt.Println(quote.Go())
-
-
+  fmt.Println(message)
 
 }
